@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @student.name %>
+</p>
+
+<p>
+  <b>Cpf:</b>
+  <%= @student.cpf %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @student.email %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @student.phone %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_student_path(@student) %> |
+<%= link_to 'Back', students_path %> |
+<%= link_to 'New Certificate', new_student_certificate_path(@student) %>
+
+<h2>Certificados</h2>
+
+<% if @student.certificates.empty? %>
+    <p>Não existem certificados gerados para este aluno.</p>
+<% else %>
+<table>
+  <tr>
+    <th>Evento</th>
+    <th>Geração</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @student.certificates.each do |certificate| %>
+  <tr>
+    <td><%= certificate.event %></td>
+    <td><%= certificate.created_at %></td>
+    <td><%= link_to 'Show', certificate %></td>
+    <td><%= link_to 'Destroy', certificate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+<% end %>

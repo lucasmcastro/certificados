@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+<div id="wrap" class="hcenter">
+    <div id="head">
+
+    </div>
+    <div id="content_head">
+        <h1 class="hcenter">CERTIFICADO</h1>
+    </div>
+    <div id="content">
+        <p class="hcenter">A IT Cursos certifica a participação de <strong><%= @student.name.upcase %></strong> no evento <strong><%= @certificate.event.upcase %></strong>, com carga horária total de <strong>10 horas</strong>,  realizado no período de <strong>18 de agosto de 2012</strong>, na cidade de Natal/RN.</p>
+    </div>
+    <div id="foot">
+            <p class="vcenter">N. <%= @certificate.uuid.upcase %></p>
+    </div>
+</div>
+</body>
+</html>
+
