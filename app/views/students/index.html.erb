@@ -2,10 +2,10 @@
 
 <table>
   <tr>
+    <th>#</th>
     <th>Name</th>
     <th>Cpf</th>
     <th>Email</th>
-    <th>Phone</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,10 +13,10 @@
 
 <% @students.each do |student| %>
   <tr>
+    <td><%= student.id %></td>
     <td><%= student.name %></td>
     <td><%= student.cpf %></td>
     <td><%= student.email %></td>
-    <td><%= student.phone %></td>
     <td><%= link_to 'Show', student %></td>
     <td><%= link_to 'Edit', edit_student_path(student) %></td>
     <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>

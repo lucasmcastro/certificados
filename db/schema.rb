@@ -36,10 +36,21 @@ ActiveRecord::Schema.define(:version => 20120928084701) do
   create_table "students", :force => true do |t|
     t.string   "name"
     t.string   "cpf"
+    t.string   "rg"
     t.string   "email"
-    t.string   "phone"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "phone1"
+    t.string   "phone2"
+    t.string   "phone3"
+    t.string   "address"
+    t.string   "zip"
+    t.string   "neighborhood"
+    t.string   "city"
+    t.string   "sex"
+    t.date     "birth_date"
+    t.string   "occupation"
+    t.string   "address_complement"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
 end

@@ -35,9 +35,10 @@ gem 'unicorn'
 # gem 'capistrano'
 
 # To use debugger
-gem 'debugger'
+# gem 'debugger'
 
 # My Gems
 gem 'uuid', '~> 2.3.5'
 gem 'pdfkit', '~> 0.5.2'
 gem 'sidekiq'
+gem 'xml-simple'

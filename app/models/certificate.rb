@@ -1,4 +1,6 @@
 class Certificate < ActiveRecord::Base
+  before_create :fill_defaults
+
   belongs_to :student
   has_many :send_attempts
 
@@ -22,5 +24,17 @@ class Certificate < ActiveRecord::Base
 
   def to_s
     "#{self.event} - #{self.student.name}"
+  end
+
+  def send_email
+    EmailWorker.perform_async(self.id)
+  end
+
+  protected
+
+  def fill_defaults
+    self.uuid = UUID.new.generate
+    self.sent = false
+    true
   end
 end

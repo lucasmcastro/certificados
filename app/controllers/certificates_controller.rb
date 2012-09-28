@@ -39,16 +39,14 @@ class CertificatesController < ApplicationController
   # POST /certificates.json
   def create
     @certificate = Certificate.new(params[:certificate])
-    @certificate.uuid = UUID.new.generate
-    @certificate.sent = false
     @student = Student.find(params[:student_id])
     @certificate.student = @student
 
 
     respond_to do |format|
       if @certificate.save
-        format.html { redirect_to @certificate, notice: 'Certificate was successfully created.' }
-        format.json { render json: @certificate, status: :created, location: @certificate }
+        format.html { redirect_to @student, notice: 'Certificate was successfully created.' }
+        format.json { render json: @student, status: :created, location: @certificate }
       else
         format.html { render action: "new" }
         format.json { render json: @certificate.errors, status: :unprocessable_entity }
