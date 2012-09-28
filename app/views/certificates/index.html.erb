@@ -1,25 +1,5 @@
-<h1>Listing certificates</h1>
+<h1>Search for Certificate</h1>
 
-<table>
-  <tr>
-    <th>Student</th>
-    <th>Uuid</th>
-    <th>Event</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @certificates.each do |certificate| %>
-  <tr>
-    <td><%= certificate.student %></td>
-    <td><%= certificate.uuid %></td>
-    <td><%= certificate.event %></td>
-    <td><%= link_to 'Show', certificate %></td>
-    <td><%= link_to 'Edit', edit_certificate_path(certificate) %></td>
-    <td><%= link_to 'Destroy', certificate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+<%= render 'search_form' %>
 
 <br />

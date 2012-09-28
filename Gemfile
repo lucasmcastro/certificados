@@ -29,7 +29,7 @@ gem 'jquery-rails'
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'
@@ -40,3 +40,4 @@ gem 'debugger'
 # My Gems
 gem 'uuid', '~> 2.3.5'
 gem 'pdfkit', '~> 0.5.2'
+gem 'sidekiq'

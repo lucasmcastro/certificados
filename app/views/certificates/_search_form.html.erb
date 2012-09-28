@@ -1,0 +1,15 @@
+<%= form_tag(search_certificate_url) %>
+
+
+  <% if flash[:error] %>
+      <p id="error"><%= flash[:error] %></p>
+  <% end %>
+
+
+  <div class="field">
+    <%= label :certificate, :search %><br />
+    <%= text_field :certificate, :search %>
+  </div>
+  <div class="actions">
+    <%= button_tag "Search" %>
+  </div>

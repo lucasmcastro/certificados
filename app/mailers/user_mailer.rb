@@ -4,7 +4,6 @@ class UserMailer < ActionMailer::Base
   def certificate_email(user, certificate)
     @user = user
     @certificate = certificate
-    debugger
     attachments["#{certificate.event} - #{user.name}.pdf"] = certificate.pdf_file()
     mail(:to => user.email, :subject => "#{certificate.event} - Envio de Certificado")
   end

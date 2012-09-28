@@ -3,7 +3,6 @@ class CertificatesController < ApplicationController
   # GET /certificates
   # GET /certificates.json
   def index
-    @certificates = Certificate.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,13 +40,13 @@ class CertificatesController < ApplicationController
   def create
     @certificate = Certificate.new(params[:certificate])
     @certificate.uuid = UUID.new.generate
+    @certificate.sent = false
     @student = Student.find(params[:student_id])
     @certificate.student = @student
 
 
     respond_to do |format|
       if @certificate.save
-        UserMailer.certificate_email(@student, @certificate).deliver
         format.html { redirect_to @certificate, notice: 'Certificate was successfully created.' }
         format.json { render json: @certificate, status: :created, location: @certificate }
       else
@@ -68,5 +67,13 @@ class CertificatesController < ApplicationController
       format.html { redirect_to @student }
       format.json { head :no_content }
     end
+  end
+
+  def search
+    certificate = Certificate.find_by_uuid!(params[:certificate][:search])
+    redirect_to certificate
+  rescue ActiveRecord::RecordNotFound
+    flash[:error] = "Nao ha certificado identificado por #{params[:certificate][:search]}."
+    render action: "index"
   end
 end

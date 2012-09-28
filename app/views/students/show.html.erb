@@ -35,6 +35,10 @@
   <tr>
     <th>Evento</th>
     <th>Geração</th>
+    <th>Enviado?</th>
+    <th>Tentativas</th>
+    <th>uuid</th>
+    <th></th>
     <th></th>
     <th></th>
   </tr>
@@ -42,9 +46,13 @@
 <% @student.certificates.each do |certificate| %>
   <tr>
     <td><%= certificate.event %></td>
-    <td><%= certificate.created_at %></td>
+    <td><%= certificate.created_at.strftime("%d-%m-%Y %H:%M") %></td>
+    <td><%= certificate.sent %></td>
+    <td><%= link_to certificate.attempts, certificate_send_attempts_path(certificate) %></td>
+    <td><%= certificate.uuid %></td>
     <td><%= link_to 'Show', certificate %></td>
     <td><%= link_to 'Destroy', certificate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Enviar', email_certificate_path(certificate), method: :post%></td>
   </tr>
 <% end %>
 </table>

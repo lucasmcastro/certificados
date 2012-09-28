@@ -16,7 +16,6 @@ Certificados::Application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    :tls => true,
     :enable_starttls_auto => true,
     :address => "smtp.gmail.com",
     :port => 587,
@@ -48,11 +47,11 @@ Certificados::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  unless $rails_rake_task
-    require 'ruby-debug'
-    Debugger.settings[:autoeval] = true
-    Debugger.settings[:autolist] = 1
-    Debugger.settings[:reload_source_on_change] = true
-    Debugger.start_remote
-  end
+  # unless $rails_rake_task
+  #   require 'ruby-debug'
+  #   Debugger.settings[:autoeval] = true
+  #   Debugger.settings[:autolist] = 1
+  #   Debugger.settings[:reload_source_on_change] = true
+  #   Debugger.start_remote
+  # end
 end

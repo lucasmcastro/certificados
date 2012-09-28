@@ -4,6 +4,7 @@ class CreateCertificates < ActiveRecord::Migration
       t.references :student
       t.string :uuid
       t.string :event
+      t.boolean :sent
 
       t.timestamps
     end
