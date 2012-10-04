@@ -1,0 +1,77 @@
+<% content_for :head do %>
+<%= javascript_include_tag "jquery.autoresize" %>
+<%= javascript_include_tag "jquery.handsontable" %>
+<%= stylesheet_link_tag    "jquery.handsontable", :media => "all" %>
+<% end %>
+
+<h2>Defina a Ordem das Colunas</h1>
+<% import_options = options_for_select([["Nome", "name"], ["Email", "email"], ["Telefone", "phone"], ["Palestra", "lecture"]]) %>
+<%= select_tag "import_data1", import_options, :prompt => "Primeira Coluna" %>
+<%= select_tag "import_data2", import_options, :prompt => "Segunda Coluna" %>
+<%= select_tag "import_data3", import_options, :prompt => "Terceira Coluna" %>
+
+<h2>Cole aqui os dados do Excel</h1>
+<div id="dataTable" class="dataTable"></div>
+<script>
+  $("#dataTable").handsontable({
+    rows: 1,
+    cols: 4,
+    minSpareCols: 1,
+    minSpareRows: 1,
+  });
+  var data = [];
+  $("#dataTable").handsontable("loadData", data);
+</script>
+
+
+<button class="submit">Enviar</button>
+<br /><br />
+<%= link_to 'Voltar', lecturers_path %>
+<form action="<%= lecturers_import_path %>" id="import_data" method="POST">
+
+</form>
+
+<script>
+function xunique(array){
+    return $.grep(array,function(el,index){
+        return index == $.inArray(el,array);
+    });
+}
+
+$("button.submit").on('click', function () {
+      setTimeout(function () {
+        //timeout is needed because Handsontable normally deselects
+        //current cell when you click outside the table
+        //get pasted data
+        dados = $("#dataTable").handsontable('getDataReference');
+        NUM_COLUMNS = 4;
+        NUM_LINES = dados.length-1;
+
+        //get column order
+        data1 = $("#import_data1").val();
+        data2 = $("#import_data2").val();
+        data3 = $("#import_data3").val();
+        data3 = $("#import_data4").val();
+        column_order = new Array();
+        if(data1)
+            column_order.push(data1);
+        if(data2)
+            column_order.push(data2);
+        if(data3)
+            column_order.push(data3);
+        column_order = xunique(column_order);
+        if(column_order.length < NUM_COLUMNS) {
+            alert("Todas as colunas devem ser preenchidas e não podem repetir.");
+            return false;
+        }
+
+        //fill forms with pasted data
+        for(i=0;i<NUM_LINES;i++){
+            for(j=0;j<NUM_COLUMNS;j++){
+                $("#import_data").append("<input type='hidden' value='"+dados[i][j]+"' name='lecturers_attributes[]["+column_order[j]+"]' />");
+            }
+        }
+        $("#import_data").submit();
+      }, 10);
+    });
+</script>

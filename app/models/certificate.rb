@@ -4,7 +4,7 @@ class Certificate < ActiveRecord::Base
   belongs_to :certifiable, :polymorphic => true
   has_many :send_attempts, :dependent => :destroy
 
-  attr_accessible :event
+  attr_accessible :event, :lecture
 
   def attempts()
     self.send_attempts.count

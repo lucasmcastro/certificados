@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @lecturer.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @lecturer.email %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @lecturer.phone %>
+</p>
+
+
+<%= link_to 'Edit', edit_lecturer_path(@lecturer) %> |
+<%= link_to 'Back', lecturers_path %> |
+<%= link_to 'Novo Certificado', new_lecturer_certificate_path(@lecturer) %>
+
+<h2>Certificados</h2>
+
+<% if @lecturer.certificates.empty? %>
+    <p>Não existem certificados gerados para este professor.</p>
+<% else %>
+<table>
+  <tr>
+    <th>Evento</th>
+    <th>Geração</th>
+    <th>Enviado?</th>
+    <th>Tentativas</th>
+    <th>uuid</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @lecturer.certificates.each do |certificate| %>
+  <tr>
+    <td><%= certificate.event %></td>
+    <td><%= certificate.created_at.strftime("%d-%m-%Y %H:%M") %></td>
+    <td><%= certificate.sent %></td>
+    <td><%= link_to certificate.attempts, certificate_send_attempts_path(certificate) %></td>
+    <td><%= certificate.uuid %></td>
+    <td><%= link_to 'Show', certificate %></td>
+    <td><%= link_to 'Destroy', certificate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Enviar', email_certificate_path(certificate), method: :post%></td>
+  </tr>
+<% end %>
+</table>
+<% end %>

@@ -28,6 +28,8 @@ class CertificatesController < ApplicationController
   def new
     if params.has_key? :student_id
       @certifiable = Student.find(params[:student_id])
+    else
+      @certifiable = Lecturer.find(params[:lecturer_id])
     end
     @certificate = Certificate.new
 
@@ -42,6 +44,8 @@ class CertificatesController < ApplicationController
   def create
     if params.has_key? :student_id
       @certifiable = Student.find(params[:student_id])
+    else
+      @certifiable = Lecturer.find(params[:lecturer_id])
     end
     @certificate = Certificate.new(params[:certificate])
     @certificate.certifiable = @certifiable
