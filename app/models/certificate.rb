@@ -1,8 +1,8 @@
 class Certificate < ActiveRecord::Base
   before_create :fill_defaults
 
-  belongs_to :student
-  has_many :send_attempts
+  belongs_to :certifiable, :polymorphic => true
+  has_many :send_attempts, :dependent => :destroy
 
   attr_accessible :event
 
@@ -23,7 +23,7 @@ class Certificate < ActiveRecord::Base
   end
 
   def to_s
-    "#{self.event} - #{self.student.name}"
+    "#{self.event} - #{self.certifiable.name}"
   end
 
   def send_email

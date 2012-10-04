@@ -15,7 +15,7 @@ class CertificatesController < ApplicationController
   def show
 
     @certificate = Certificate.find(params[:id])
-    @student = @certificate.student
+    @certifiable = @certificate.certifiable
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,7 +26,9 @@ class CertificatesController < ApplicationController
   # GET /certificates/new
   # GET /certificates/new.json
   def new
-    @student = Student.find(params[:student_id])
+    if params.has_key? :student_id
+      @certifiable = Student.find(params[:student_id])
+    end
     @certificate = Certificate.new
 
     respond_to do |format|
@@ -38,15 +40,16 @@ class CertificatesController < ApplicationController
   # POST /certificates
   # POST /certificates.json
   def create
+    if params.has_key? :student_id
+      @certifiable = Student.find(params[:student_id])
+    end
     @certificate = Certificate.new(params[:certificate])
-    @student = Student.find(params[:student_id])
-    @certificate.student = @student
-
+    @certificate.certifiable = @certifiable
 
     respond_to do |format|
       if @certificate.save
-        format.html { redirect_to @student, notice: 'Certificate was successfully created.' }
-        format.json { render json: @student, status: :created, location: @certificate }
+        format.html { redirect_to @certificate, notice: 'Certificate was successfully created.' }
+        format.json { render json: @certificate, status: :created, location: @certificate }
       else
         format.html { render action: "new" }
         format.json { render json: @certificate.errors, status: :unprocessable_entity }
@@ -58,11 +61,11 @@ class CertificatesController < ApplicationController
   # DELETE /certificates/1.json
   def destroy
     @certificate = Certificate.find(params[:id])
-    @student = @certificate.student
+    certifiable = @certificate.certifiable
     @certificate.destroy
 
     respond_to do |format|
-      format.html { redirect_to @student }
+      format.html { redirect_to certifiable }
       format.json { head :no_content }
     end
   end

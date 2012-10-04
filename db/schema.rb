@@ -11,18 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120928084701) do
+ActiveRecord::Schema.define(:version => 20121003205036) do
 
   create_table "certificates", :force => true do |t|
-    t.integer  "student_id"
+    t.integer  "certifiable_id"
     t.string   "uuid"
     t.string   "event"
     t.boolean  "sent"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.string   "certifiable_type"
+    t.string   "lecture"
   end
-
-  add_index "certificates", ["student_id"], :name => "index_certificates_on_student_id"
 
   create_table "send_attempts", :force => true do |t|
     t.string   "message"
