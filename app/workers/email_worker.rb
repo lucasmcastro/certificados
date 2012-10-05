@@ -4,10 +4,9 @@ class EmailWorker
 
     def perform(certificate_id)
         certificate = Certificate.find(certificate_id)
-        student = certificate.student
 
         attempt = SendAttempt.create(:certificate=>certificate, :message=>"Envio Iniciado...")
-        mail = UserMailer.certificate_email(student, certificate).deliver
+        mail = UserMailer.certificate_email(certificate).deliver
 
         attempt.update_attribute(:message, "Envio Finalizado!")
         certificate.update_attribute(:sent, true)
