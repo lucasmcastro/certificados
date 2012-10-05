@@ -12,7 +12,7 @@ class LecturersController < ApplicationController
       lecturer = Lecturer.create(attributes)
     end
 
-    redirect_to lectrers_path
+    redirect_to lecturers_path
   end
 
 

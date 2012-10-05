@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121003225715) do
+ActiveRecord::Schema.define(:version => 20121005001700) do
 
   create_table "certificates", :force => true do |t|
     t.integer  "certifiable_id"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20121003225715) do
     t.string   "phone"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "resume"
   end
 
   create_table "send_attempts", :force => true do |t|
