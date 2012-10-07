@@ -18,7 +18,9 @@ class Certificate < ActiveRecord::Base
         :margin_left => 2,
         :margin_right => 2,
         :margin_bottom => 2,
-        :margin_top => 2)
+        :margin_top => 2,
+        :encoding => 'UTF-8',
+        :disable_smart_shrinking=>false)
     kit.to_pdf
   end
 
