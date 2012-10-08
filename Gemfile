@@ -34,11 +34,21 @@ gem 'unicorn'
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
-# gem 'debugger'
-
 # My Gems
 gem 'uuid', '~> 2.3.5'
 gem 'pdfkit', '~> 0.5.2'
 gem 'sidekiq'
 gem 'xml-simple'
+
+group :development, :test do
+  gem 'debugger'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'faker'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'launchy'
+end
