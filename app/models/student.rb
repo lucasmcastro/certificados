@@ -7,7 +7,7 @@ class Student < ActiveRecord::Base
 
   def create_certificate(event)
     cert = Certificate.new(:event => event)
-    cert.student = self
+    cert.certifiable = self
     cert.save()
   end
 

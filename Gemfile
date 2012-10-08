@@ -39,6 +39,7 @@ gem 'uuid', '~> 2.3.5'
 gem 'pdfkit', '~> 0.5.2'
 gem 'sidekiq'
 gem 'xml-simple'
+gem 'pry-rails', :group => :development
 
 group :development, :test do
   gem 'debugger'
