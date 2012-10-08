@@ -1,0 +1,103 @@
+body {
+    width: 960px;
+    margin: 0 auto;
+    font: normal 16px/24px "Lucida Grande", Arial, Ubuntu, sans-serif;
+    padding: 48px 20px 0;
+}
+
+strong {
+    font-weight: bold;
+    TEXT-TRANSFORM: uppercase;
+}
+
+.vcenter {
+    display: table-cell;
+    vertical-align:middle;
+}
+
+.hcenter {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+#wrap {
+    background: url(<%= asset_path "bg_certificate.png" %>) no-repeat;
+    height: 200mm;
+    width: 287mm;
+}
+
+#wrap {
+    background-color: #fdfdfd;
+}
+
+#head {
+    height: 65mm;
+    width: 287mm;
+
+}
+
+#content_head {
+    height: 30mm;
+    width: 287mm;
+
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 12mm;
+    line-height: 1.3em;
+}
+
+#content {
+    height: 85mm;
+    width: 287mm;
+
+    display: table;
+}
+
+#content p {
+    font-family: verdana;
+    font-size: 9mm;
+    line-height: 10mm;
+    width: 270mm;
+}
+
+#foot {
+    display: table;
+    height: 20mm;
+    width: 287mm;
+    background-color: black;
+
+}
+
+#foot p {
+    text-align: right;
+    color: white;
+    padding-right: 5mm;
+}
+
+/* Tables */
+
+
+table {
+  border-width: 1px;
+  border-color: #666666;
+  border-collapse: collapse;
+}
+
+th {
+  border-width: 1px;
+  padding: 8px;
+  border-style: solid;
+  border-color: #666666;
+  background-color: #dedede;
+}
+
+td {
+  border-width: 1px;
+  padding: 8px;
+  border-style: solid;
+  border-color: #666666;
+  background-color: #ffffff;
+}

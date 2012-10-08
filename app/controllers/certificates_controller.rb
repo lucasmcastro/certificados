@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class CertificatesController < ApplicationController
   layout "certificate", :only => [:show]
   # GET /certificates
@@ -78,7 +80,7 @@ class CertificatesController < ApplicationController
     certificate = Certificate.find_by_uuid!(params[:certificate][:search])
     redirect_to certificate
   rescue ActiveRecord::RecordNotFound
-    flash[:error] = "Nao ha certificado identificado por #{params[:certificate][:search]}."
+    flash[:error] = "Não há certificado identificado por #{params[:certificate][:search]}."
     render action: "index"
   end
 end
