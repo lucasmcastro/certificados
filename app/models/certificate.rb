@@ -4,7 +4,7 @@ class Certificate < ActiveRecord::Base
   belongs_to :certifiable, :polymorphic => true
   has_many :send_attempts, :dependent => :destroy
 
-  attr_accessible :event, :lecture
+  attr_accessible :event, :lecture, :course, :course_code, :duration, :start_date, :end_date, :topics, :kind
 
   def attempts()
     self.send_attempts.count
@@ -19,13 +19,16 @@ class Certificate < ActiveRecord::Base
         :margin_right => 2,
         :margin_bottom => 2,
         :margin_top => 2,
-        :encoding => 'UTF-8',
-        :disable_smart_shrinking=>false)
+        :encoding => 'UTF-8')
     kit.to_pdf
   end
 
   def to_s
-    "#{self.event} - #{self.certifiable.name}"
+    "#{self.title} - #{self.certifiable.name}"
+  end
+
+  def title
+    self.send self.kind
   end
 
   def send_email

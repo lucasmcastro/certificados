@@ -1,3 +1,7 @@
 Ola <%= @user.name %>,
 
-segue anexo ao e-mail o seu certificado do ITDAY 2012.
+<% if @certificate.kind == "event" %>
+segue anexo ao e-mail o seu certificado do evento <%= @certificate.event %>.
+<% else %>
+segue anexo ao e-mail o seu certificado do curso <%= @certificate.course %>.
+<% end %>

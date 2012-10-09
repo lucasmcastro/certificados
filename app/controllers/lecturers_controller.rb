@@ -7,14 +7,18 @@ class LecturersController < ApplicationController
   # POST /lecturers/imports
   # POST /lecturers/imposrts.json
   def create_import
-    lecturers_attributes = params[:lecturers_attributes]
-    lecturers_attributes.each do |attributes|
-      lecturer = Lecturer.create(attributes)
+    lecturers = params[:certifiable_attributes]
+    lecturers.each do |lecturer|
+      certificate = lecturer[:certificate_attributes]
+      certificate[:kind] = "event"
+      certificate[:course_code] = certificate[:event]
+      lecturer.delete :certificate_attributes
+      l = Lecturer.create(lecturer)
+      l.certificates.create(certificate)
     end
 
     redirect_to lecturers_path
   end
-
 
   # GET /lecturers
   # GET /lecturers.json

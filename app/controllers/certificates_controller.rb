@@ -83,4 +83,11 @@ class CertificatesController < ApplicationController
     flash[:error] = "Não há certificado identificado por #{params[:certificate][:search]}."
     render action: "index"
   end
+
+  def filter
+    @certificates = Certificate.find_all_by_course_code(params[:certificate][:filter])
+
+    render action: "index"
+
+  end
 end

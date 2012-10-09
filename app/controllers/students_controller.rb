@@ -1,4 +1,24 @@
 class StudentsController < ApplicationController
+  # GET /lecturers/imports/new
+  # GET /lecturers/imports/new.json
+  def new_import
+  end
+
+  # POST /lecturers/imports
+  # POST /lecturers/imposrts.json
+  def create_import
+    students = params[:certifiable_attributes]
+    students.each do |student|
+      certificate = student[:certificate_attributes]
+      certificate['kind'] = "course"
+      student.delete :certificate_attributes
+      s = Student.create(student)
+      s.certificates.create(certificate)
+    end
+
+    redirect_to students_path
+  end
+
   # GET /students
   # GET /students.json
   def index

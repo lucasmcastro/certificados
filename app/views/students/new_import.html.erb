@@ -1,0 +1,10 @@
+<h2>Cole aqui os dados do Excel</h1>
+<div id="dataTable" class="dataTable"
+data-attributes="name,email,phone1,course,course_code,duration,start_date,end_date,topics"
+data-end="2"></div>
+
+<button class="submit">Enviar</button>
+<br /><br />
+<%= link_to 'Voltar', students_path %>
+<form action="<%= students_import_path %>" id="import_data" method="POST">
+</form>

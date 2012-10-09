@@ -22,7 +22,7 @@ strong {
 
 
 #wrap {
-    background: url(<%= asset_path "bg_certificate.png" %>) no-repeat;
+    background: url('/assets/bg_certificate.png') no-repeat;
     height: 200mm;
     width: 287mm;
 }
@@ -57,8 +57,8 @@ h1 {
 
 #content p {
     font-family: verdana;
-    font-size: 9mm;
-    line-height: 10mm;
+    font-size: 7mm;
+    line-height: 8mm;
     width: 270mm;
 }
 
@@ -74,4 +74,38 @@ h1 {
     text-align: right;
     color: white;
     padding-right: 5mm;
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 6mm;
+}
+
+div#topics {
+    margin-top: 10mm;
+}
+
+div#topics ul {
+    margin-top: 10mm;
+    list-style-position: inside;
+    list-style-type: square;
+}
+
+div#topics ul li {
+    font-size: 6mm;
+    text-align: left;
+}
+
+div.column_offset {
+    float: left;
+    width: 50mm;
+}
+
+div.column {
+  float: left;
+  width: 100mm;
+}
+
+br {
+  clear: left;
 }

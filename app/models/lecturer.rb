@@ -3,7 +3,4 @@ class Lecturer < ActiveRecord::Base
 
   has_many :certificates, :as => :certifiable, :dependent => :destroy
 
-  def certificate_attributes=(certificate_attributes)
-    self.certificates.build(certificate_attributes)
-  end
 end

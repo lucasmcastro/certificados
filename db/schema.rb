@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121005001700) do
+ActiveRecord::Schema.define(:version => 20121009001409) do
 
   create_table "certificates", :force => true do |t|
     t.integer  "certifiable_id"
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(:version => 20121005001700) do
     t.datetime "updated_at",       :null => false
     t.string   "certifiable_type"
     t.string   "lecture"
+    t.string   "kind"
+    t.string   "course"
+    t.string   "start_date"
+    t.string   "end_date"
+    t.string   "duration"
+    t.string   "topics"
+    t.string   "course_code"
   end
 
   create_table "lecturers", :force => true do |t|

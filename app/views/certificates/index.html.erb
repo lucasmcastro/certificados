@@ -1,5 +1,9 @@
-<h1>Search for Certificate</h1>
+<h1>Validar Certificados</h1>
 
 <%= render 'search_form' %>
+<%= render 'filter_form' %>
 
+<% if @certificates %>
+<%= render 'filter_result' %>
+<% end %>
 <br />

@@ -33,7 +33,7 @@
 <% else %>
 <table>
   <tr>
-    <th>Evento</th>
+    <th>Titulo</th>
     <th>Geração</th>
     <th>Enviado?</th>
     <th>Tentativas</th>
@@ -45,7 +45,7 @@
 
 <% @student.certificates.each do |certificate| %>
   <tr>
-    <td><%= certificate.event %></td>
+    <td><%= certificate.title %></td>
     <td><%= certificate.created_at.strftime("%d-%m-%Y %H:%M") %></td>
     <td><%= certificate.sent %></td>
     <td><%= link_to certificate.attempts, certificate_send_attempts_path(certificate) %></td>
