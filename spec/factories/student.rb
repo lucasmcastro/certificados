@@ -9,7 +9,7 @@ FactoryGirl.define do
     cpf "387.851.975-30" #random valid
     rg "403289440" #random valid
   end
-  factory :real, class: Student do
+  factory :real_student, class: Student do
     name "Derpino Herp Merp"
     email  "derpinomerp@gmail.com"
   end

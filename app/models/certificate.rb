@@ -4,7 +4,12 @@ class Certificate < ActiveRecord::Base
   belongs_to :certifiable, :polymorphic => true
   has_many :send_attempts, :dependent => :destroy
 
-  attr_accessible :event, :lecture, :course, :course_code, :duration, :start_date, :end_date, :topics, :kind
+  attr_accessible :event, :lecture, :course, :course_code, :duration,
+                  :start_date, :end_date, :topics, :kind
+
+  validates :course_code, :event, :duration, :certifiable_id, :presence => true
+  validates :lecture, :presence => true, :if => :event_and_lecturer?
+  validates :start_date, :end_date, :presence => true, :if => :course?
 
   def attempts()
     self.send_attempts.count
@@ -36,6 +41,13 @@ class Certificate < ActiveRecord::Base
   end
 
   protected
+  def event_and_lecturer?
+    self.kind == "event" and self.certifiable_type == "Lecturer"
+  end
+
+  def course?
+    self.kind == "course"
+  end
 
   def fill_defaults
     self.uuid = UUID.new.generate
