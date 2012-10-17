@@ -7,9 +7,10 @@ class Certificate < ActiveRecord::Base
   attr_accessible :event, :lecture, :course, :course_code, :duration,
                   :start_date, :end_date, :topics, :kind
 
-  validates :course_code, :event, :duration, :certifiable_id, :presence => true
+  validates :course_code, :duration, :certifiable_id, :presence => true
+  validates :start_date, :end_date, :course, :presence => true, :if => :course?
+  validates :event, :presence => true, :if => :event?
   validates :lecture, :presence => true, :if => :event_and_lecturer?
-  validates :start_date, :end_date, :presence => true, :if => :course?
 
   def attempts()
     self.send_attempts.count
@@ -41,6 +42,10 @@ class Certificate < ActiveRecord::Base
   end
 
   protected
+  def event?
+    self.kind == "event"
+  end
+
   def event_and_lecturer?
     self.kind == "event" and self.certifiable_type == "Lecturer"
   end

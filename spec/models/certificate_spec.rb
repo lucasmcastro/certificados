@@ -47,6 +47,18 @@ describe Certificate do
     certificate.save.should be_true
   end
 
+  it "should require course only if kind is course" do
+    certificate = FactoryGirl.build(:event_lecturer_certificate, course: nil)
+    certificate.save.should be_true
+    certificate = FactoryGirl.build(:event_student_certificate, course: nil)
+    certificate.save.should be_true
+    certificate = FactoryGirl.build(:course_lecturer_certificate, course: nil)
+    certificate.save.should be_false
+    certificate = FactoryGirl.build(:course_student_certificate, course: nil)
+    certificate.save.should be_false
+  end
+
+
   it "should require start_date only if kind is course" do
     certificate = FactoryGirl.build(:event_lecturer_certificate, start_date: nil)
     certificate.save.should be_true

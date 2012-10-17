@@ -19,7 +19,7 @@ FactoryGirl.define do
 
   trait :course do
     kind "course"
-    event "Academia de Programação"
+    course "Academia de Programação"
     course_code "DEV1 1256"
     duration "240 horas"
     start_date "Junho de 2012"
