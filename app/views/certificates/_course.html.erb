@@ -1,4 +1,4 @@
-A IT Cursos certifica a participação de <strong><%= @certifiable.name.upcase %></strong> no curso <strong><%= @certificate.course.upcase %></strong>, com carga horária total de <strong><%= @certificate.duration %></strong>,  realizado no período de <strong><%= @certificate.start_date %></strong> a <strong><%= @certificate.end_date %></strong>, em Natal/RN<% if @certificate.certifiable_type == "Lecturer" %>, na qualidade de <strong>PROFESSOR</strong><% end %>.
+A IT Cursos certifica a participação de <strong><%= @certifiable.name.upcase %></strong> no curso <strong><%= @certificate.course.upcase %></strong>, com carga horária total de <strong><%= @certificate.duration %></strong>,  realizado no período de <strong><%= @certificate.start_date %></strong><% unless @certificate.start_date == @certificate.end_date %> a <strong><%= @certificate.end_date %></strong><% end %>, em Natal/RN<% if @certificate.certifiable_type == "Lecturer" %>, na qualidade de <strong>PROFESSOR</strong><% end %>.
 
 <div id="topics">
 <h2>CONTEÚDO PROGRAMÁTICO</h2>
