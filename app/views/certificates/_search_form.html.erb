@@ -1,4 +1,4 @@
-<%= form_tag(search_certificates_url) do %>
+<%= form_tag(search_certificates_url, :method => :get) do %>
 
 
   <% if flash[:error] %>
@@ -7,7 +7,6 @@
 
 
   <div class="field">
-    <%= label :certificate, :search %><br />
     <%= text_field :certificate, :search %>
   </div>
   <div class="actions">

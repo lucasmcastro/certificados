@@ -1,6 +1,6 @@
 <h2>Filtrar Certificados</h2>
 
-<%= form_tag(filter_certificates_url) do %>
+<%= form_tag(filter_certificates_url, :method => :get) do %>
 
 
   <% if flash[:error] %>
@@ -9,7 +9,6 @@
 
 
   <div class="field">
-    <%= label :certificate, :search %><br />
     <%= select(:certificate, :filter, Certificate.select("course_code").uniq.collect {|c| [c.course_code,c.course_code] }) %>
   </div>
   <div class="actions">
