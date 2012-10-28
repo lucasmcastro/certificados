@@ -10,9 +10,9 @@
     <th></th>
   </tr>
 
-<% @certificates.each do |certificate| %>
+<% certificates.each do |certificate| %>
   <tr>
-    <td><%= certificate.certifiable.name %></td>
+    <td><%= link_to certificate.certifiable_name, certificate.certifiable %></td>
     <td><%= certificate.created_at.strftime("%d-%m-%Y") %></td>
     <td><%= certificate.sent %></td>
     <td><%= link_to certificate.attempts, certificate_send_attempts_path(certificate) %></td>

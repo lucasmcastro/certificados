@@ -9,14 +9,14 @@
     <div id="content">
         <p class="hcenter">
 <% if @certificate.kind == 'event' %>
-            <%= render 'event' %>
+    <%= render 'event', :certificate => @certificate, :certifiable => @certifiable %>
 <% else %>
-            <%= render 'course' %>
+    <%= render 'course', :certificate => @certificate, :certifiable => @certifiable %>
 <% end %>
         </p>
     </div>
     <div id="foot">
-            <p class="vcenter">N. <%= @certificate.uuid.upcase %></p>
+        <p class="vcenter">N. <%= @certificate.uuid.upcase %></p>
     </div>
 </div>
 

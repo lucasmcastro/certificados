@@ -1,10 +1,10 @@
-<%= form_for([@certifiable,@certificate]) do |f| %>
-  <% if @certificate.errors.any? %>
+<%= form_for([certifiable,certificate]) do |f| %>
+  <% if certificate.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@certificate.errors.count, "error") %> prohibited this certificate from being saved:</h2>
+      <h2><%= pluralize(certificate.errors.count, "error") %> prohibited this certificate from being saved:</h2>
 
       <ul>
-      <% @certificate.errors.full_messages.each do |msg| %>
+      <% certificate.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -16,7 +16,7 @@
     <%= f.text_field :event %>
   </div>
 
-  <% if @certifiable.class.name == "Lecturer" %>
+  <% if certifiable.class.name == "Lecturer" %>
   <div class="field">
     <%= f.label :lecture %><br />
     <%= f.text_field :lecture %>

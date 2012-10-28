@@ -1,21 +1,17 @@
-A IT Cursos certifica a participação de <strong><%= @certifiable.name.upcase %></strong> no curso <strong><%= @certificate.course.upcase %></strong>, com carga horária total de <strong><%= @certificate.duration %></strong>,  realizado no período de <strong><%= @certificate.start_date %></strong><% unless @certificate.start_date == @certificate.end_date %> a <strong><%= @certificate.end_date %></strong><% end %>, em Natal/RN<% if @certificate.certifiable_type == "Lecturer" %>, na qualidade de <strong>PROFESSOR</strong><% end %>.
+A IT Cursos certifica a participação de <strong><%= certifiable.name.upcase %></strong> no curso <strong><%= certificate.course.upcase %></strong>, com carga horária total de <strong><%= certificate.duration %></strong>,  realizado no período de <strong><%= certificate.start_date %></strong><% unless certificate.start_date == certificate.end_date %> a <strong><%= certificate.end_date %></strong><% end %>, em Natal/RN<% if certificate.certifiable_type == "Lecturer" %>, na qualidade de <strong>PROFESSOR</strong><% end %>.
 
 <div id="topics">
 <h2>CONTEÚDO PROGRAMÁTICO</h2>
     <div class="column_offset">
         &nbsp;
     </div>
-    <%
-        topics = @certificate.topics.split(",")
-        size = (topics.length/2.0).ceil()
-        topics.each_slice(size) do |slice_topic|
-    %>
-    <div class="column">
-    <ul
-    <% slice_topic.each do |topic| %>
-            ><li><%= "#{topic.strip}" %></li
-    <% end %>
-    ></ul>
-    </div>
+    <% slice_topics(certificate.topics).each do |topics_slice| %>
+        <div class="column">
+        <ul
+        <% topics_slice.each do |topic| %>
+                ><li><%= "#{topic.strip}" %></li
+        <% end %>
+        ></ul>
+        </div>
     <% end %>
 </div>

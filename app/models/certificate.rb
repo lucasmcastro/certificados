@@ -11,6 +11,7 @@ class Certificate < ActiveRecord::Base
   validates :start_date, :end_date, :course, :presence => true, :if => :course?
   validates :event, :presence => true, :if => :event?
   validates :lecture, :presence => true, :if => :event_and_lecturer?
+  delegate :name, :to => :certifiable, :prefix => true
 
   def attempts()
     self.send_attempts.count
@@ -27,10 +28,6 @@ class Certificate < ActiveRecord::Base
         :margin_top => 2,
         :encoding => 'UTF-8')
     kit.to_pdf
-  end
-
-  def to_s
-    "#{self.title} - #{self.certifiable.name}"
   end
 
   def title

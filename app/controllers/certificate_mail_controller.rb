@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class CertificateMailController < ApplicationController
   def create
     @certificate = Certificate.find(params[:certificate_id])

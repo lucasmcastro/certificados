@@ -42,6 +42,7 @@ gem 'xml-simple'
 gem 'pry-rails', :group => :development
 
 group :development, :test do
+  gem "rails_best_practices"
   gem 'debugger'
   gem 'rspec-rails'
   gem 'factory_girl_rails'

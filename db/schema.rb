@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121009001409) do
+ActiveRecord::Schema.define(:version => 20121028204440) do
 
   create_table "certificates", :force => true do |t|
     t.integer  "certifiable_id"
@@ -30,6 +30,10 @@ ActiveRecord::Schema.define(:version => 20121009001409) do
     t.string   "topics"
     t.string   "course_code"
   end
+
+  add_index "certificates", ["certifiable_id"], :name => "index_certificates_on_certifiable_id"
+  add_index "certificates", ["certifiable_type"], :name => "index_certificates_on_certifiable_type"
+  add_index "certificates", ["uuid"], :name => "index_certificates_on_uuid"
 
   create_table "lecturers", :force => true do |t|
     t.string   "name"
