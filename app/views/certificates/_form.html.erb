@@ -16,12 +16,50 @@
     <%= f.text_field :event %>
   </div>
 
+  <div class="field">
+    <%= f.label :duration %><br />
+    <%= f.text_field :duration %>
+  </div>
+
+  <div class="field">
+    <%= f.label :start_date %><br />
+    <%= f.text_field :start_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :end_date %><br />
+    <%= f.text_field :end_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :kind %><br />
+    <%= f.text_field :kind %>
+  </div>
+
+  <div class="field">
+    <%= f.label :course %><br />
+    <%= f.text_field :course %>
+  </div>
+
+  <div class="field">
+    <%= f.label :course_code %><br />
+    <%= f.text_field :course_code %>
+  </div>
+
+  <div class="field">
+    <%= f.label :topics %><br />
+    <%= f.text_field :topics %>
+  </div>
+
+
   <% if certifiable.class.name == "Lecturer" %>
   <div class="field">
     <%= f.label :lecture %><br />
     <%= f.text_field :lecture %>
   </div>
   <% end %>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>
