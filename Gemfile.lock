@@ -70,6 +70,9 @@ GEM
     faker (1.1.2)
       i18n (~> 0.5)
     ffi (1.6.0)
+    figaro (0.6.3)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     formatador (0.2.4)
     guard (1.7.0)
       formatador (>= 0.2.4)
@@ -238,6 +241,7 @@ DEPENDENCIES
   coffee-rails
   factory_girl_rails
   faker
+  figaro
   guard
   guard-rspec
   jquery-rails

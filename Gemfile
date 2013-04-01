@@ -21,6 +21,7 @@ gem 'pdfkit', '~> 0.5.2'
 gem 'sidekiq'
 gem 'xml-simple'
 gem 'pry-rails', :group => :development
+gem 'figaro'
 
 group :development, :test do
   gem "rails_best_practices"

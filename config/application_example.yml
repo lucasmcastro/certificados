@@ -1,0 +1,8 @@
+# Rename this file to application.yml and set your variables
+SMTP_TLS: true
+SMTP_HOST: "smtp.gmail.com"
+SMTP_PORT: 587
+SMTP_DOMAIN: "gmail.com"
+SMTP_AUTHENTICATION: "plain"
+SMTP_USER: "fillwithyouruser"
+SMTP_PASSWORD: "fillwithyourpassword"

@@ -16,13 +16,13 @@ Certificados::Application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    :enable_starttls_auto => true,
-    :address => "smtp.gmail.com",
-    :port => 587,
-    :domain => "gmail.com",
-    :authentication => "plain",
-    :user_name => "very_secret_user",
-    :password => "very_secret_password",
+    :enable_starttls_auto => ENV["SMTP_TLS"],
+    :address => ENV["SMTP_HOST"],
+    :port => ENV["SMTP_PORT"],
+    :domain => ENV["SMTP_DOMAIN"],
+    :authentication => ENV["SMTP_AUTHENTICATION"],
+    :user_name => ENV["SMTP_USER"],
+    :password => ENV["SMTP_PASSWORD"],
   }
 
   # Don't care if the mailer can't send
