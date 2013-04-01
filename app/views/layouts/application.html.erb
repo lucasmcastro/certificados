@@ -7,6 +7,51 @@
 </head>
 <body>
 
+
+
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="brand" href="./">Sendtificate</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li class="dropdown">
+              <%= link_to "Estudantes", students_path, :class => "dropdown-toggle", :"data-toggle" => "dropdown" %>
+              <ul class="dropdown-menu">
+                <li class="">
+                  <%= link_to "Todos", students_path %>
+                </li>                                
+                <li class="">
+                  <%= link_to "Novo", new_student_path %>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <%= link_to "Professores", lecturers_path, :class => "dropdown-toggle", :"data-toggle" => "dropdown" %>
+              <ul class="dropdown-menu">
+                <li class="">
+                  <%= link_to "Todos", lecturers_path %>
+                </li>                                
+                <li class="">
+                  <%= link_to "Novo", new_lecturer_path %>
+                </li>
+              </ul>
+            </li>
+            <li class="">
+              <%= link_to "Certificados", certificates_path %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <%= yield %>
   <%= javascript_include_tag "application" %>
 </body>

@@ -1,6 +1,18 @@
 /**
- *= require reset
  *= require scaffolds
  *= require general
  *= require jquery.handsontable
+ *= require bootstrap_and_overrides
  */
+
+ div#top ul li {
+ 	display:inline;
+ }
+
+ .float_left {
+ 	float:left;
+ }
+
+ .clear {
+ 	clear:both;
+ }
