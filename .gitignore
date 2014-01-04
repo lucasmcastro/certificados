@@ -6,3 +6,4 @@
 # Figaro
 /config/application.yml
 .DS_STORE
+.vagrant
