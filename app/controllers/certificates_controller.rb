@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 class CertificatesController < ApplicationController
+  autocomplete :certificate, :uuid, :full => false
   layout "certificate", :only => [:show]
 
   def index

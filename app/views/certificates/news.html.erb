@@ -1,0 +1,12 @@
+<h2>Validar Certificados</h2>
+
+<%= form_tag(create_validation_url, :method => :post) do %>
+  <% if flash[:error] %>
+      <p id="error"><%= flash[:error] %></p>
+  <% end %>
+
+  <div class="field">
+    <%= input_tag(:validation, :uuid %>
+  </div>
+
+  <% end %>

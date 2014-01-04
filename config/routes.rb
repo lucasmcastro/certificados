@@ -1,4 +1,12 @@
+require 'sidekiq/web'
+
 Certificados::Application.routes.draw do
+
+  resources :validations, :only => [:new, :create, :show]
+
+  resources :certificates, :only => [] do
+    get :autocomplete_certificate_uuid, :on => :collection
+  end
 
   get "students/imports/new" => "students#new_import", :as => :new_students_import
   post "students/imports" => "students#create_import", :as => :students_import
@@ -9,6 +17,7 @@ Certificados::Application.routes.draw do
   get "certificates/" => "certificates#index", :as => :certificates
   get "certificates/filter" => "certificates#filter", :as => :filter_certificates
 
+
   [:lecturers, :students].each do |r|
     resources r do
       resources :certificates, :except => [:edit, :update, :index], :shallow => true do
@@ -17,5 +26,8 @@ Certificados::Application.routes.draw do
     end
   end
 
+  resource :validation, :only => [:new, :create], :shallow => true
+
+  mount Sidekiq::Web, at: "/sidekiq"
   root :to => "certificates#index"
 end

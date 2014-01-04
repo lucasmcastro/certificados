@@ -1,8 +1,8 @@
 /**
- *= require scaffolds
- *= require general
  *= require jquery.handsontable
  *= require bootstrap_and_overrides
+ *= require jquery-ui-1.10.2/jquery.ui.all.css
+ *= require general
  */
 
  div#top ul li {

@@ -1,0 +1,15 @@
+<h2>Validar Certificado</h2>
+
+<%= form_tag(validations_path, :method => :post) do %>
+  <% if flash[:error] %>
+      <p id="error"><%= flash[:error] %></p>
+  <% end %>
+
+  <div class="field">
+    <%= autocomplete_field :certificate, :uuid,  autocomplete_certificate_uuid_certificates_path %>
+
+
+  </div>
+
+  <%= submit_tag "validar" %>
+  <% end %>

@@ -1,30 +1,41 @@
 source 'https://rubygems.org'
 
 gem 'rails'
-gem 'sqlite3'
+gem 'pg'
 
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', :platforms => :ruby
   gem 'uglifier'
 end
 
-gem "less-rails"
-gem "twitter-bootstrap-rails"
+gem 'less-rails'
 gem 'jquery-rails'
+gem 'twitter-bootstrap-rails'
+gem 'rails3-jquery-autocomplete'
 gem 'unicorn'
 gem 'uuid', '~> 2.3.5'
+
+
+
+
+
+
+
+
 gem 'pdfkit', '~> 0.5.2'
-gem 'sidekiq'
 gem 'xml-simple'
-gem 'pry-rails', :group => :development
 gem 'figaro'
+gem 'prawn_rails'
+# For Sidekiq App
+gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'slim'
 
 group :development, :test do
-  gem "rails_best_practices"
+  gem 'pry-rails'
+  gem 'rails_best_practices'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'rb-inotify', :require => false
